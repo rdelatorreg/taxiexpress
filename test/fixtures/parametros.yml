@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  texto: MyString
+  valor: 1
+  entidad_id: 
+
+two:
+  texto: MyString
+  valor: 1
+  entidad_id: 

@@ -1,4 +1,22 @@
 Rails.application.routes.draw do
+  
+  scope '/admin' do
+    resources :usuarios
+    
+    
+    resources :entidades do
+       resources :parametros
+    end
+    
+    get '/' => 'usuarios#index'
+  end
+  
+  root 'home#index'
+  
+  get 'home/login'
+  get 'home/contactenos'
+  get 'home/reservas'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -49,8 +67,7 @@ Rails.application.routes.draw do
 
   # Example resource route within a namespace:
   #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+       # Directs /admin/products/* to Admin::ProductsController
+       # (app/controllers/admin/products_controller.rb)
+    #      end
 end

@@ -1,0 +1,8 @@
+<%= simple_form_for @entidad, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :Descripcion %>
+  <%= error_span(@entidad[:Descripcion]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                entidades_path, :class => 'btn btn-default' %>
+<% end %>
