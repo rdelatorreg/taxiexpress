@@ -1,14 +1,14 @@
 require 'test_helper'
 
-class UseresControllerTest < ActionController::TestCase
+class UsersControllerTest < ActionController::TestCase
   setup do
-    @user = useres(:one)
+    @user = users(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:useres)
+    assert_not_nil assigns(:users)
   end
 
   test "should get new" do
@@ -44,6 +44,6 @@ class UseresControllerTest < ActionController::TestCase
       delete :destroy, id: @user
     end
 
-    assert_redirected_to useres_path
+    assert_redirected_to users_path
   end
 end

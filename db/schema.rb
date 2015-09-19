@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918041815) do
+ActiveRecord::Schema.define(version: 20150919032004) do
 
   create_table "entidades", force: :cascade do |t|
     t.string   "Descripcion", limit: 255
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150918041815) do
 
   add_index "parametros", ["entidad_id"], name: "index_parametros_on_entidad_id", using: :btree
 
-  create_table "useres", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name",                  limit: 255
     t.string   "last_name",             limit: 255
     t.string   "nick",                  limit: 255
@@ -41,5 +41,5 @@ ActiveRecord::Schema.define(version: 20150918041815) do
     t.datetime "updated_at",                        null: false
   end
 
-  add_foreign_key "parametros", "entidades"
+  add_foreign_key "parametros", "entidades", column: "entidad_id"
 end

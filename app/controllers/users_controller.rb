@@ -1,28 +1,28 @@
-class UseresController < ApplicationController
+class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /useres
-  # GET /useres.json
+  # GET /users
+  # GET /users.json
   def index
-    @useres = User.all
+    @users = User.all
   end
 
-  # GET /useres/1
-  # GET /useres/1.json
+  # GET /users/1
+  # GET /users/1.json
   def show
   end
 
-  # GET /useres/new
+  # GET /users/new
   def new
     @user = User.new
   end
 
-  # GET /useres/1/edit
+  # GET /users/1/edit
   def edit
   end
 
-  # POST /useres
-  # POST /useres.json
+  # POST /users
+  # POST /users.json
   def create
     @user = User.new(user_params)
 
@@ -37,8 +37,8 @@ class UseresController < ApplicationController
     end
   end
 
-  # PATCH/PUT /useres/1
-  # PATCH/PUT /useres/1.json
+  # PATCH/PUT /users/1
+  # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -51,12 +51,12 @@ class UseresController < ApplicationController
     end
   end
 
-  # DELETE /useres/1
-  # DELETE /useres/1.json
+  # DELETE /users/1
+  # DELETE /users/1.json
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to useres_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

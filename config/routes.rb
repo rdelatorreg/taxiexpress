@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :users
   resources :useres
   resources :useres
   scope '/admin' do
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
        resources :parametros
     end
     
-    get '/' => 'usuarios#index'
+    get '/' => 'useres#index'
   end
   
   root 'home#index'
