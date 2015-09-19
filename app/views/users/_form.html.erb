@@ -5,7 +5,8 @@
   <%= error_span(@user[:last_name]) %>
   <%= f.input :nick %>
   <%= error_span(@user[:nick]) %>
-  <%= f.input :password %>
+  <%= f.password_field :password %>
+  <%= f.password_field :password_confirmation %>
   <%= error_span(@user[:password]) %>
   <%= f.input :phone %>
   <%= error_span(@user[:phone]) %>
@@ -16,5 +17,5 @@
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                users_path, :class => 'btn btn-default' %>
+                root_path, :class => 'btn btn-default' %>
 <% end %>

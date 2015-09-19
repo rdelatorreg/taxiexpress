@@ -1,0 +1,12 @@
+<%= simple_form_for @reservation, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :source_addres %>
+  <%= error_span(@reservation[:source_addres]) %>
+  <%= f.input :final_addres %>
+  <%= error_span(@reservation[:final_addres]) %>
+  <%= f.input :user_id %>
+  <%= error_span(@reservation[:user_id]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                reservations_path, :class => 'btn btn-default' %>
+<% end %>

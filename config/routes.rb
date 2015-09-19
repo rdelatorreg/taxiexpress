@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
   
+  resources :reservations
+  resources :reservations
   resources :users
-  resources :useres
-  resources :useres
+
   scope '/admin' do
-    resources :usuarios
+    resources :users
     
     
     resources :entidades do
        resources :parametros
     end
     
-    get '/' => 'useres#index'
+    get '/' => 'users#index'
   end
   
   root 'home#index'
