@@ -16,7 +16,7 @@ class ReservationsController < ApplicationController
   def new
     @documenttypes_options = Documenttype.all.map{|u| [ u.name, u.id ] }
     @reservation = Reservation.new
-
+    @users = User.all
   end
 
   # GET /reservations/1/edit
