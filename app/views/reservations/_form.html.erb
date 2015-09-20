@@ -1,12 +1,16 @@
-<%= simple_form_for @reservation, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :source_addres %>
-  <%= error_span(@reservation[:source_addres]) %>
-  <%= f.input :final_addres %>
-  <%= error_span(@reservation[:final_addres]) %>
-  <%= f.input :user_id %>
+<%= simple_form_for @reservation, :html => { :class => 'form-horizontal form-group' } do |f| %>
+  <%= f.label 'Nombres y Apellidos:'%>
+  <%= f.text_field :user_id, :placeholder=>'Nombres y apellidos', :class => 'form-control' %>
   <%= error_span(@reservation[:user_id]) %>
+  <%= f.label 'Dirección origen:' %>
+  <%= f.text_field :source_addres, :placeholder=>'Origen', :class => 'form-control'%>
+  <%= error_span(@reservation[:source_addres]) %>
+  <%= f.label 'Dirección final:' %>
+  <%= f.text_field :final_addres, :placeholder=>'Destino', :class => 'form-control'%>
+  <%= error_span(@reservation[:final_addres]) %>
 
-  <%= f.button :submit, :class => 'btn-primary' %>
+
+  <%= f.button :submit, :class => 'btn-primary', :value => 'Reservar'%>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 reservations_path, :class => 'btn btn-default' %>
 <% end %>
