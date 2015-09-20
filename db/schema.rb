@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919050131) do
+ActiveRecord::Schema.define(version: 20150920061807) do
+
+  create_table "documenttypes", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "entidades", force: :cascade do |t|
     t.string   "Descripcion", limit: 255

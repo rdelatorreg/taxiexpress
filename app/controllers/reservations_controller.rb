@@ -14,7 +14,9 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/new
   def new
+    @documenttypes_options = Documenttype.all.map{|u| [ u.name, u.id ] }
     @reservation = Reservation.new
+
   end
 
   # GET /reservations/1/edit
@@ -25,7 +27,8 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
-
+    @documenttypes = Documenttype.all
+    
     respond_to do |format|
       if @reservation.save
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }

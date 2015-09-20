@@ -1,13 +1,14 @@
 <%= simple_form_for @reservation, :html => { :class => 'form-horizontal form-group' } do |f| %>
-  <%= f.label 'Nombres y Apellidos:'%>
-  <%= f.text_field :user_id, :placeholder=>'Nombres y apellidos', :class => 'form-control' %>
+  <%= f.input :user_id, :placeholder=>'Nombres y apellidos',  label:'Nombres y Apellidos', input_html: { class:'form-control' } %>
   <%= error_span(@reservation[:user_id]) %>
-  <%= f.label 'Dirección origen:' %>
-  <%= f.text_field :source_addres, :placeholder=>'Origen', :class => 'form-control'%>
+  <%= f.input :source_addres, :placeholder=>'Origen', label:'Origen', input_html: { class:'form-control' } %>
   <%= error_span(@reservation[:source_addres]) %>
-  <%= f.label 'Dirección final:' %>
-  <%= f.text_field :final_addres, :placeholder=>'Destino', :class => 'form-control'%>
+  <%= f.input :final_addres, :placeholder=>'Destino', label:'Destino', input_html: { class:'form-control' } %>
   <%= error_span(@reservation[:final_addres]) %>
+  
+  
+  <%= f.label :documenttypes_id %>
+  <%= select_tag(:documenttypes_id, options_for_select(@documenttypes_options), :include_blank=> true , :class => "form-control"  ) %>
 
 
   <%= f.button :submit, :class => 'btn-primary', :value => 'Reservar'%>

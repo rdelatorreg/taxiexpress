@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :documenttypes
+  resources :tipodocumentos
   resources :reservations
   resources :reservations
   resources :users
