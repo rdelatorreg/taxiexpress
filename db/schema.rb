@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150920061807) do
+ActiveRecord::Schema.define(version: 20150922011346) do
 
   create_table "documenttypes", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -19,21 +19,21 @@ ActiveRecord::Schema.define(version: 20150920061807) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "entidades", force: :cascade do |t|
-    t.string   "Descripcion", limit: 255
+  create_table "entities", force: :cascade do |t|
+    t.string   "Description", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
 
-  create_table "parametros", force: :cascade do |t|
-    t.string   "texto",      limit: 255
-    t.integer  "valor",      limit: 4
-    t.integer  "entidad_id", limit: 4
+  create_table "parameters", force: :cascade do |t|
+    t.string   "text",       limit: 255
+    t.integer  "value",      limit: 4
+    t.integer  "entity_id",  limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
-  add_index "parametros", ["entidad_id"], name: "index_parametros_on_entidad_id", using: :btree
+  add_index "parameters", ["entity_id"], name: "index_parameters_on_entity_id", using: :btree
 
   create_table "reservations", force: :cascade do |t|
     t.string   "source_addres", limit: 255
@@ -57,6 +57,6 @@ ActiveRecord::Schema.define(version: 20150920061807) do
     t.string   "password_digest",       limit: 255
   end
 
-  add_foreign_key "parametros", "entidades", column: "entidad_id"
+  add_foreign_key "parameters", "entities"
   add_foreign_key "reservations", "users"
 end
