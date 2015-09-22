@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922030945) do
+ActiveRecord::Schema.define(version: 20150922032629) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -58,11 +58,13 @@ ActiveRecord::Schema.define(version: 20150922030945) do
   add_index "parametros", ["entidad_id"], name: "index_parametros_on_entidad_id", using: :btree
 
   create_table "reservations", force: :cascade do |t|
-    t.string   "source_addres", limit: 255
-    t.string   "final_addres",  limit: 255
-    t.integer  "user_id",       limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "source_addres",     limit: 255
+    t.string   "final_addres",      limit: 255
+    t.integer  "user_id",           limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "districtsource_id", limit: 4
+    t.integer  "districtfinal_id",  limit: 4
   end
 
   add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
