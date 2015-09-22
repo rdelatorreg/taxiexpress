@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   
  
+  resources :districts
  # resources :documenttypes
-#  resources :reservations
+  resources :reservations
   
   scope '/admin' do
     resources :users
