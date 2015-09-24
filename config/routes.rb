@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
  
+  resources :curriculums
   resources :districts
  # resources :documenttypes
   resources :reservations

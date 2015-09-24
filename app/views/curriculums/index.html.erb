@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="body-content">Listing Curriculums</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @curriculums.each do |curriculum| %>
+      <tr>
+        <td><%= curriculum.name %></td>
+        <td><%= curriculum.description %></td>
+        <td><%= link_to 'Show', curriculum %></td>
+        <td><%= link_to 'Edit', edit_curriculum_path(curriculum) %></td>
+        <td><%= link_to 'Destroy', curriculum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Curriculum', new_curriculum_path %>
