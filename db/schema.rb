@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923204816) do
+ActiveRecord::Schema.define(version: 20150927002739) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "district_id",    limit: 4
+    t.string   "flag",           limit: 255
+    t.integer  "reservation_id", limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "address",        limit: 255
+  end
 
   create_table "curriculums", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -32,6 +41,12 @@ ActiveRecord::Schema.define(version: 20150923204816) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "entidades", force: :cascade do |t|
+    t.string   "Descripcion", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "entities", force: :cascade do |t|
     t.string   "Description", limit: 255
     t.datetime "created_at",              null: false
@@ -48,14 +63,20 @@ ActiveRecord::Schema.define(version: 20150923204816) do
 
   add_index "parameters", ["entity_id"], name: "index_parameters_on_entity_id", using: :btree
 
+  create_table "parametros", force: :cascade do |t|
+    t.string   "texto",      limit: 255
+    t.integer  "valor",      limit: 4
+    t.integer  "entidad_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "parametros", ["entidad_id"], name: "index_parametros_on_entidad_id", using: :btree
+
   create_table "reservations", force: :cascade do |t|
-    t.string   "source_addres",     limit: 255
-    t.string   "final_addres",      limit: 255
-    t.integer  "user_id",           limit: 4
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.integer  "districtsource_id", limit: 4
-    t.integer  "districtfinal_id",  limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
@@ -73,5 +94,6 @@ ActiveRecord::Schema.define(version: 20150923204816) do
   end
 
   add_foreign_key "parameters", "entities"
+  add_foreign_key "parametros", "entidades", column: "entidad_id"
   add_foreign_key "reservations", "users"
 end

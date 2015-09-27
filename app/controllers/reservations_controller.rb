@@ -14,9 +14,10 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/new
   def new
-    @documenttypes_options = Documenttype.all.map{|u| [ u.name, u.id ] }
     @reservation = Reservation.new
-    @users = User.all
+    @documenttypes_options = Documenttype.all.map{|u| [ u.name, u.id ] }
+    @districts_options = District.all.map{|u| [ u.name, u.id ] }
+    
   end
 
   # GET /reservations/1/edit
@@ -27,7 +28,6 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
-    @documenttypes = Documenttype.all
     
     respond_to do |format|
       if @reservation.save

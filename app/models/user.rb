@@ -1,4 +1,4 @@
 class User < ActiveRecord::Base
     has_many :reservations
-    has_secure_password
+    has_one :documenttypes
 end
