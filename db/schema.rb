@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(version: 20150920061807) do
     t.string   "password_digest",       limit: 255
   end
 
+  create_table "usuarios", force: :cascade do |t|
+    t.string   "Nombres",    limit: 255
+    t.string   "ApPaterno",  limit: 255
+    t.string   "ApMaterno",  limit: 255
+    t.string   "Nick",       limit: 255
+    t.string   "Contrasena", limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   add_foreign_key "parametros", "entidades", column: "entidad_id"
   add_foreign_key "reservations", "users"
 end
