@@ -1,14 +1,29 @@
 class HomeController < ApplicationController
   def index
-  	
   end
 
-  def login
+  def nosotros
+    
   end
-
-  def contactenos
+  
+  def nuestros_servicios
+    
   end
-
-  def reservas
+  
+  def tarifas
+    
   end
+  
+  def trabaja_nosotros
+    
+  end
+  
+  def contacto
+    
+  end   
+  
+  def ingresar
+    
+  end
+  
 end
