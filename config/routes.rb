@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
   
-  resources :documenttypes
-  resources :tipodocumentos
+ 
+  resources :vehicles
+  resources :curriculums
+  resources :districts
+ # resources :documenttypes
   resources :reservations
-  resources :reservations
-  resources :users
-
+  
   scope '/admin' do
     resources :users
     
-    
-    resources :entidades do
-       resources :parametros
+    resources :entities do
+       resources :parameters
     end
     
     get '/' => 'users#index'

@@ -1,3 +1,3 @@
 class Documenttype < ActiveRecord::Base
-    has_many :reservations
+    belongs_to :users
 end

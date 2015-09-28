@@ -1,0 +1,42 @@
+<%- model_class = Parameter -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:text) %></th>
+      <th><%= model_class.human_attribute_name(:value) %></th>
+      <th><%= model_class.human_attribute_name(:entity_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @parameters.each do |parameter| %>
+      <tr>
+        <td><%= link_to parameter.id, entity_parameter_path(@entity,parameter) %></td>
+        <td><%= parameter.text %></td>
+        <td><%= parameter.value %></td>
+        <td><%= parameter.entity_id %></td>
+        <td><%=l parameter.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_entity_parameter_path(@entity,parameter), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      entity_parameter_path(@entity,parameter),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_entity_parameter_path,
+            :class => 'btn btn-primary' %>
+            
+            <a class="btn btn-sm btn-warning" href="<%=entities_path%>">Regresar</a>

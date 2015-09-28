@@ -1,0 +1,15 @@
+<%= simple_form_for(@vehicle) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :marca %>
+    <%= f.input :modelo %>
+    <%= f.input :placa %>
+    <%= f.input :codmodalidad %>
+    <%= f.input :codestado %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
