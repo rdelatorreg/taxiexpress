@@ -1,22 +1,25 @@
 <%- model_class = Entity -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>Entidades</h1>
 </div>
-<table class="table table-striped">
+<p>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+            new_entity_path,
+            :class => 'btn btn-primary' %>
+
+</p>
+            
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:Description) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>Nombre</th>
+      <th width="200"><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @entities.each do |entity| %>
       <tr>
-        <td><%= link_to entity.id, entity_path(entity) %></td>
         <td><%= entity.Description %></td>
-        <td><%=l entity.created_at %></td>
         <td>
           <a class="btn btn-xs btn-success" href="<%=entity_parameters_path entity%>">Parametros</a>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -32,6 +35,4 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_entity_path,
-            :class => 'btn btn-primary' %>
+

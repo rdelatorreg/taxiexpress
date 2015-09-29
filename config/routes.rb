@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   
  
   resources :curriculums
-  resources :districts
+  
  # resources :documenttypes
   resources :reservations
   
   scope '/admin' do
     resources :users
-    
+    resources :districts  
     resources :entities do
        resources :parameters
     end

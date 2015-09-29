@@ -1,6 +1,6 @@
 class DistrictsController < ApplicationController
   before_action :set_district, only: [:show, :edit, :update, :destroy]
-
+  layout 'admin'
   # GET /districts
   # GET /districts.json
   def index
