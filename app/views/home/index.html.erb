@@ -49,8 +49,9 @@
                           <div class="form-group">
                             <label for="inputEmail3" class="col-sm-3 control-label">Origen</label>
                             <div class="col-sm-9">
+                                
                               <select class="form-control">
-                                  <option>-- Origen --</option>
+                                  <%= options_from_collection_for_select(District.all,:id,:name)  %>
                               </select>
                             </div>
                           </div>
@@ -58,7 +59,7 @@
                             <label for="inputPassword3" class="col-sm-3 control-label">Destino</label>
                             <div class="col-sm-9">
                               <select class="form-control">
-                                  <option>-- Destino --</option>
+                                   <%= options_from_collection_for_select(District.all,:id,:name)  %>
                               </select>
                             </div>
                           </div>

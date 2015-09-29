@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
+  
+
   def index
+    @districts = District.all
   end
 
   def nosotros
