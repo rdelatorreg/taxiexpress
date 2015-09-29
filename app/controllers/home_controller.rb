@@ -2,7 +2,12 @@ class HomeController < ApplicationController
   
 
   def index
-    @districts = District.all
+    @districts =  District.all.collect {|p| [ p.name, p.id ] }
+    @reservation = Reservation.new
+  end
+  
+  def procesa_reserva
+    
   end
 
   def nosotros

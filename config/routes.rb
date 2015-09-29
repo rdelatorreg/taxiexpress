@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get 'trabaja_nosotros' => 'home#trabaja_nosotros'
   get 'contacto' => 'home#contacto'
   get 'ingresar' => 'home#ingresar'
+  
+  #POST
+  post 'procesa_reserva' => 'home#procesa_reserva'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
