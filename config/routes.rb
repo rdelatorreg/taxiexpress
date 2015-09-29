@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  
- 
-  resources :curriculums
-  
  # resources :documenttypes
   resources :reservations
   
