@@ -2,6 +2,7 @@ Rails.application.routes.draw do
  # resources :documenttypes
   resources :reservations
   
+  
   scope '/admin' do
     resources :users
     resources :districts  
@@ -20,9 +21,11 @@ Rails.application.routes.draw do
   get 'trabaja_nosotros' => 'home#trabaja_nosotros'
   get 'contacto' => 'home#contacto'
   get 'ingresar' => 'home#ingresar'
+  get 'mensaje' => 'home#message'
   
   #POST
   post 'procesa_reserva' => 'home#procesa_reserva'
+  post 'contacto_create' => 'home#contacto_create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
