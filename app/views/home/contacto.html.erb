@@ -1,25 +1,62 @@
-<%= form_for @contacto, url: contacto_create_path do |f| %>
-  <fieldset>
-    <div class="field">
-      <%= f.text_field :name, placeholder: "Name" %>
-    </div>
-    
-    <div class="field">
-      <%= f.email_field :email, placeholder: "Email"%>
-    </div>
-    
-    <div class="field">
-      <%= f.text_area :message, placeholder: "Message"%>
-    </div>
-    
-    <div class="field">
-      <%= f.text_area :body, placeholder: "Escriba mensaje"%>
-    </div>    
-  </fieldset>
+<%= simple_form_for @contacto, url: contacto_create_path do |f| %>
+
+    <h2 style="margin-left:5px">Contáctenos</h2>
   
-  <fieldset>
-    <div class="field">
-      <%= f.submit "Send" %>
-    </div>
-  </fieldset>
+    
+    <div class="form-group" style="margin-left:5px">
+      <div class="row">
+        <div class="col-xs-6"> 
+          <%= f.label :name, "Nombres y apellidos" %>
+          <%= f.text_field :name, placeholder: "Nombres y apellidos", class:"form-control" %>
+        </div>
+        <div class="col-xs-4">&nbsp</div>
+      </div>
+      
+      <span><%= @contacto.errors[:name] %></span>
+    </div>    
+    
+    <div class="form-group" style="margin-left:5px">
+      <div class="row">
+        <div class="col-xs-6"> 
+        <%= f.label :email,"Correo electrónico" %>
+        <%= f.email_field :email, placeholder: "Correo electrónico", class:"form-control"  %>
+        </div>
+        <div class="col-xs-4">&nbsp;</div>
+      </div>        
+      <span><%= @contacto.errors[:email] %></span>
+    </div>       
+    
+    <div class="form-group" style="margin-left:5px">
+      <div class="row">
+        <div class="col-xs-6"> 
+        <%= f.label :message, "Asunto" %>
+        <%= f.text_field :message, placeholder: "Asunto", class:"form-control"  %>
+        </div>
+        <div class="col-xs-4">&nbsp;</div>
+      </div>        
+      <span><%= @contacto.errors[:message] %></span>
+    </div>      
+    
+    <div class="form-group" style="margin-left:5px">
+      <div class="row">
+        <div class="col-xs-6"> 
+        <%= f.label :body, "Mensaje" %>
+        <%= f.text_area :body, placeholder: "Escriba su mensaje", class:"form-control", cols:20,rows:7   %>
+        </div>
+        <div class="col-xs-4">&nbsp;</div>
+      </div>              
+      <span><%= @contacto.errors[:body] %></span>
+    </div>  
+ 
+     <div class="form-group" style="margin-left:5px">
+      <div class="row">
+        <div class="col-sm-6"> 
+          <%= f.submit "Enviar mensaje", class:"btn btn-default" %>
+        </div>
+        <div class="col-xs-4">&nbsp;</div>
+      </div>        
+    </div> 
+
+
+
 <% end %>
