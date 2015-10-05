@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150927002005) do
+ActiveRecord::Schema.define(version: 20150929031004) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "district_id",    limit: 4
@@ -21,11 +21,21 @@ ActiveRecord::Schema.define(version: 20150927002005) do
     t.datetime "updated_at",                 null: false
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "message",    limit: 255
+    t.string   "email",      limit: 255
+    t.string   "body",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "curriculums", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "imagen",      limit: 255
   end
 
   create_table "districts", force: :cascade do |t|
@@ -77,6 +87,7 @@ ActiveRecord::Schema.define(version: 20150927002005) do
     t.datetime "updated_at",                        null: false
     t.string   "password_digest",       limit: 255
     t.integer  "documenttypes_id",      limit: 4
+    t.string   "imagen",                limit: 255
   end
 
   add_foreign_key "parameters", "entities"
