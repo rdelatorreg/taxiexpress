@@ -31,6 +31,7 @@
 
 
   <%= f.button :submit, :class => 'btn-primary', :value => 'Reservar'%>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), reservations_path, :class => 'btn btn-default' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                root_path, :class => 'btn btn-default' %>
   
 <% end %>
