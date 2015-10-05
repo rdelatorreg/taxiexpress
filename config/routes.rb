@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     resources :entities do
        resources :parameters
     end
+    delete 'muestra_mensajes/:id' => 'home#destroy'
+    get 'muestra_mensajes' => 'home#contacto_show'
+    
+    
     
     get '/' => 'users#index'
   end
