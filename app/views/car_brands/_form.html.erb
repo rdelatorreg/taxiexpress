@@ -1,0 +1,11 @@
+<%= simple_form_for @car_brand do |f| %>
+    <%= f.input :name %>
+    <%= error_span(@car_brand[:name]) %>
+
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                car_brands_path, :class => 'btn btn-default' %>
+<% end %>
+
+

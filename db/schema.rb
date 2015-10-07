@@ -11,9 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922032629) do
+ActiveRecord::Schema.define(version: 20151007042449) do
+
+  create_table "car_brands", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "message",    limit: 255
+    t.string   "email",      limit: 255
+    t.string   "body",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "curriculums", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "districts", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "documenttypes", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -59,6 +87,20 @@ ActiveRecord::Schema.define(version: 20150922032629) do
     t.string   "password_digest",       limit: 255
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.string   "model",            limit: 255
+    t.integer  "fabrication_year", limit: 4
+    t.string   "color",            limit: 255
+    t.string   "serial_number",    limit: 255
+    t.integer  "car_brand_id",     limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "license_plate",    limit: 255
+  end
+
+  add_index "vehicles", ["car_brand_id"], name: "index_vehicles_on_car_brand_id", using: :btree
+
   add_foreign_key "parameters", "entities"
   add_foreign_key "reservations", "users"
+  add_foreign_key "vehicles", "car_brands"
 end

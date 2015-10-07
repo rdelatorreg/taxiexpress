@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  
  # resources :documenttypes
   resources :reservations
   
@@ -6,6 +8,11 @@ Rails.application.routes.draw do
   scope '/admin' do
     resources :users
     resources :districts  
+    
+    #marcas de vehiculos
+    resources :car_brands
+    resources :vehicles
+    
     resources :entities do
        resources :parameters
     end
