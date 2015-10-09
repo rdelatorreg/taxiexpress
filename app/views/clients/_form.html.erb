@@ -1,11 +1,20 @@
-<%= simple_form_for(@client) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @client, :html => { :class => 'form' } do |f| %>
+  <%= f.input :email %>
+  <%= error_span(@client[:email]) %>
+  <%= f.input :firstname %>
+  <%= error_span(@client[:firstname]) %>
+  <%= f.input :lastname %>
+  <%= error_span(@client[:lastname]) %>
+  <%= f.input :documenttype %>
+  <%= error_span(@client[:documenttype]) %>
+  <%= f.input :documentnumber %>
+  <%= error_span(@client[:documentnumber]) %>
+  <%= f.input :address %>
+  <%= error_span(@client[:address]) %>
+  <%= f.input :birthdate %>
+  <%= error_span(@client[:birthdate]) %>
 
-  <div class="form-inputs">
-
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                clients_path, :class => 'btn btn-default' %>
 <% end %>

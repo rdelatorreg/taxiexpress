@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_action :authenticate_client!, only: :procesa_reserva
   layout 'portada', only: :index
 
   def index
