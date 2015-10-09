@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get 'mensaje' => 'home#message'
   get 'workwithus/new'
   get 'workwithus/index'
+  get 'workwithus/index' => 'workwithus#download', as: :download
  #POST
   post 'procesa_reserva' => 'home#procesa_reserva'
   post 'contacto_create' => 'home#contacto_create'

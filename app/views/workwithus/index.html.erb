@@ -1,2 +1,35 @@
-<h1>Workwithus#index</h1>
-<p>Find me in app/views/workwithus/index.html.erb</p>
+<%- model_class = Workwithu -%>
+<div class="page-header">
+  <h1>Choferes postulantes</h1>
+</div>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:age) %></th>      
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:license_number) %></th>
+      <th><%= model_class.human_attribute_name(:document) %></th>
+      
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @workwithus.each do |workwithu| %>
+      <tr>
+        <td><%= workwithu.name %></td>
+        <td><%= workwithu.age %></td>        
+        <td><%= workwithu.email %></td>
+        <td><%= workwithu.license_number %></td>
+        <td><%= link_to "Documento adjunto",workwithu.document.url %></td>
+        <td><%=l workwithu.created_at %></td>
+        <td>
+          <%= link_to 'Aprobar' %>
+        </td>                      
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

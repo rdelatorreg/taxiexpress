@@ -1,8 +1,11 @@
 class Workwithu < ActiveRecord::Base
-
   validates :name, length: { minimum: 7, message: "La longitud no puede ser menor a 7 caracteres" }, format: { with: /\A[a-zA-Z ]+\z/, message: "Solo se permiten letras y espacios en blanco." }
   
   validates :age, numericality: { only_integer: true, message: "solo se permiten números" }, length: { maximum: 2, message: "No puede ingresar más de dos dígitos" }
+
+
+  validates :license_number, presence: true
+
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { minimum: 7, message: "La longitud no puede ser menor a 7 caracteres" },
@@ -16,5 +19,5 @@ class Workwithu < ActiveRecord::Base
                        presence: true,
                        content_type: { 
                          content_type: 
-                         [ "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ] }                    
+                         [ "application/pdf"] }                    
 end
