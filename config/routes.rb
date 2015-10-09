@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
   
+  get 'workwithus/new'
+  post 'workwithus_create' => 'workwithus#create'
+
+  get 'workwithus/index'
+
  # resources :documenttypes
   resources :reservations
   
@@ -29,7 +34,6 @@ Rails.application.routes.draw do
   get 'nosotros' => 'home#nosotros'
   get 'nuestros_servicios' => 'home#nuestros_servicios'
   get 'tarifas' => 'home#tarifas'
-  get 'trabaja_nosotros' => 'home#trabaja_nosotros'
   get 'contacto' => 'home#contacto'
   get 'ingresar' => 'home#ingresar'
   get 'mensaje' => 'home#message'
@@ -37,6 +41,7 @@ Rails.application.routes.draw do
   #POST
   post 'procesa_reserva' => 'home#procesa_reserva'
   post 'contacto_create' => 'home#contacto_create'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

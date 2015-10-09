@@ -1,0 +1,66 @@
+<%= simple_form_for @workwithus, url: workwithus_create_path do |f| %>
+
+    <h2 style="margin-left:5px">Trabaja con nosotros</h2>
+  
+    
+    <div class="form-group" style="margin-left:5px">
+      <div class="row">
+        <div class="col-xs-6"> 
+          <%= f.label :name, "Nombres y apellidos" %>
+          <%= f.text_field :name, placeholder: "Nombres y apellidos", class:"form-control" %>
+        </div>
+        <div class="col-xs-4">&nbsp</div>
+      </div>
+      <span><%= f.error:name, id: 'name_error' %></span>
+    </div>    
+    
+    <div class="form-group" style="margin-left:5px">
+      <div class="row">
+        <div class="col-xs-6"> 
+        <%= f.label :age, "Edad" %>
+        <%= f.text_field :age, placeholder: "Edad", class:"form-control"  %>
+        </div>
+        <div class="col-xs-4">&nbsp;</div>
+      </div>        
+      <span><%= f.error:age, id: 'message_error' %></span>      
+    </div>       
+    
+    <div class="form-group" style="margin-left:5px">
+      <div class="row">
+        <div class="col-xs-6"> 
+        <%= f.label :email,"Correo electrónico" %>
+        <%= f.email_field :email, placeholder: "Correo electrónico", class:"form-control"  %>
+        </div>
+        <div class="col-xs-4">&nbsp;</div>
+      </div>        
+      <span><%= f.error:email, id: 'email_error' %></span>
+    </div>       
+    
+    <div class="form-group" style="margin-left:5px">
+      <div class="row">
+        <div class="col-xs-6"> 
+          <%= f.label :document,"Adjuntar CV" %>
+          <%= f.input :document, as: :file, label:false %>
+        </div>
+        <div class="col-xs-4">&nbsp;</div>
+      </div>
+      <span><%= error_span(@workwithus[:document]) %></span>
+    </div>
+   
+     
+  
+    
+
+ 
+     <div class="form-group" style="margin-left:5px">
+      <div class="row">
+        <div class="col-sm-6"> 
+          <%= f.submit "Enviar postulación", class:"btn btn-default" %>
+        </div>
+        <div class="col-xs-4">&nbsp;</div>
+      </div>        
+    </div> 
+
+
+
+<% end %>

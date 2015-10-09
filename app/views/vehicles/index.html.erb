@@ -5,7 +5,7 @@
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:car_brand) %></th>
+      <th><%= model_class.human_attribute_name(:car_brand_id) %></th>
       <th><%= model_class.human_attribute_name(:license_plate) %></th>      
       <th><%= model_class.human_attribute_name(:model) %></th>
       <th><%= model_class.human_attribute_name(:fabrication_year) %></th>
@@ -19,7 +19,7 @@
   <tbody>
     <% @vehicles.each do |vehicle| %>
       <tr>
-        <td><%= vehicle.car_brand %></td>
+        <td><%= vehicle.car_brand_name %></td>
         <td><%= vehicle.license_plate %></td>        
         <td><%= vehicle.model %></td>
         <td><%= vehicle.fabrication_year %></td>

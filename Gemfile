@@ -55,4 +55,7 @@ gem 'nprogress-rails', '~> 0.1.6.3'
 
 gem 'awesome_print'
 
+# Model Attachments Support
+gem 'paperclip', '~> 4.2'
+
 
