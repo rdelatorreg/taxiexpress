@@ -57,7 +57,16 @@
                     </li>
                     <li>
                         <p class="navbar-btn">
-                            <a href="<%=ingresar_path%>" class="btn btn-success"><i class="fa fa-home"></i> Ingresar</a>
+
+                            <% if client_signed_in? %>
+                              <a href="<%=destroy_client_session_path%>" class="btn btn-default"><i class="fa fa-home"></i> Salir</a>
+                              <% else %>
+                              <a href="<%=new_client_session_path%>" class="btn btn-success"><i class="fa fa-home"></i> Ingresar</a>
+                            <% end %>
+
+
+
+
                         </p>
                     </li>
                     
@@ -67,6 +76,13 @@
         </div>
         <!-- /.container -->
     </nav>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+    </div>
 
     <%= yield %>
     

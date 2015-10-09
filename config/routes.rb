@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
-  
   get 'workwithus/new'
   post 'workwithus_create' => 'workwithus#create'
 
   get 'workwithus/index'
+
+  devise_for :clients, controllers: {
+     sessions: 'clients/sessions'
+  }
 
  # resources :documenttypes
   resources :reservations
