@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  
+  layout 'portada', only: :index
 
   def index
     @districts =  District.all.collect {|p| [ p.name, p.id ] }

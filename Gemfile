@@ -57,7 +57,7 @@ gem 'awesome_print'
 
 
 # Model Attachments Support
-gem 'paperclip', '~> 4.2'
+gem "paperclip", "~> 4.3"
 
 gem 'devise'
 

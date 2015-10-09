@@ -1,21 +1,16 @@
 Rails.application.routes.draw do
-
-  get 'workwithus/new'
-  post 'workwithus_create' => 'workwithus#create'
-
-  get 'workwithus/index'
-
   devise_for :clients, controllers: {
      sessions: 'clients/sessions'
   }
 
- # resources :documenttypes
   resources :reservations
-  
-  
+
+
+
   scope '/admin' do
     resources :users
-    resources :districts  
+    resources :districts
+    resources :clients
     
     #marcas de vehiculos
     resources :car_brands
@@ -40,10 +35,12 @@ Rails.application.routes.draw do
   get 'contacto' => 'home#contacto'
   get 'ingresar' => 'home#ingresar'
   get 'mensaje' => 'home#message'
-  
-  #POST
+  get 'workwithus/new'
+  get 'workwithus/index'
+ #POST
   post 'procesa_reserva' => 'home#procesa_reserva'
   post 'contacto_create' => 'home#contacto_create'
+  post 'workwithus_create' => 'workwithus#create'
   
 
   # The priority is based upon order of creation: first created -> highest priority.

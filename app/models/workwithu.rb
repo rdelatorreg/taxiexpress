@@ -1,4 +1,5 @@
 class Workwithu < ActiveRecord::Base
+
   validates :name, length: { minimum: 7, message: "La longitud no puede ser menor a 7 caracteres" }, format: { with: /\A[a-zA-Z ]+\z/, message: "Solo se permiten letras y espacios en blanco." }
   
   validates :age, numericality: { only_integer: true, message: "solo se permiten números" }, length: { maximum: 2, message: "No puede ingresar más de dos dígitos" }

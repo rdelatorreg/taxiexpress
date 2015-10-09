@@ -205,7 +205,7 @@ DEPENDENCIES
   less-rails
   mysql2
   nprogress-rails (~> 0.1.6.3)
-  paperclip (~> 4.2)
+  paperclip (~> 4.3)
   rails (= 4.2.4)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
