@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  
+  devise_for :clients, controllers: {
+     sessions: 'clients/sessions'
+  }
  # resources :documenttypes
   resources :reservations
   
