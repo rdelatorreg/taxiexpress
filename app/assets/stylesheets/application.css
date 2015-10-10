@@ -24,13 +24,19 @@
 
 /* Global Styles */
 
-html,
-body {
+html, body {
     height: 100%;
 }
 
 body {
     padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -226px;
+    padding-bottom: 226px;
 }
 
 .img-portfolio {
@@ -41,7 +47,7 @@ body {
     opacity: 0.8;
 }
 
-/* Home Page Carousel */
+/* carrusel */
 
 header.carousel {
     height: 50%;
@@ -60,36 +66,20 @@ header.carousel .fill {
     background-size: cover;
 }
 
-/* 404 Page Styles */
+/*FOOTER*/
 
-.error-404 {
-    font-size: 100px;
+#footer {
+    background: #fafafa;
+    color: #787878;
+}
+#footer .block-info {
+    padding: 20px 0 20px;
+    background: #1b1b1b;
+    color: #929191;
 }
 
-/* Pricing Page Styles */
 
-.price {
-    display: block;
-    font-size: 50px;
-    line-height: 50px;
-}
 
-.price sup {
-    top: -20px;
-    left: 2px;
-    font-size: 20px;
-}
-
-.period {
-    display: block;
-    font-style: italic;
-}
-
-/* Footer Styles */
-
-footer {
-    margin: 50px 0;
-}
 
 /* Responsive Styles */
 

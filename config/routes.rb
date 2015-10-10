@@ -38,8 +38,8 @@ Rails.application.routes.draw do
   get 'workwithus/new'
   get 'workwithus/index'
   get 'workwithus/index' => 'workwithus#download', as: :download
+  get 'reservacion' => 'home#reservacion'
  #POST
-  post 'procesa_reserva' => 'home#procesa_reserva'
   post 'contacto_create' => 'home#contacto_create'
   post 'workwithus_create' => 'workwithus#create'
   

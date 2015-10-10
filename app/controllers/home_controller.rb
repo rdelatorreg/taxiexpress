@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :authenticate_client!, only: :procesa_reserva
+  before_action :authenticate_client!, only: :reservacion
   layout 'portada', only: :index
 
   def index
@@ -7,8 +7,8 @@ class HomeController < ApplicationController
     @reservation = Reservation.new
   end
   
-  def procesa_reserva
-    
+  def reservacion
+
   end
 
   def nosotros
