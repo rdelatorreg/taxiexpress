@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
   def index
     @districts =  District.all.collect {|p| [ p.name, p.id ] }
-    @reservation = Reservation.new
+    @carousel = Carousel.all
   end
   
   def reservacion

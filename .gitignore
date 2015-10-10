@@ -17,3 +17,5 @@
 /log/*
 !/log/.keep
 /tmp
+/public/system/workwithus
+/public/system/carousels

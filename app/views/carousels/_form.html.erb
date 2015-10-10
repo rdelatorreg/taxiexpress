@@ -1,0 +1,10 @@
+<%= simple_form_for @carousel do |f| %>
+    <%= f.input :name %>
+    <%= error_span(@carousel[:name]) %>
+    <%= f.input :image, as: :file %>
+    <%= error_span(@carousel[:image]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                carousels_path, :class => 'btn btn-default' %>
+<% end %>

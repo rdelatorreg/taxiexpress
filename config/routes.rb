@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+
   devise_for :clients, controllers: {
-     sessions: 'clients/sessions'
+     sessions: 'clients/sessions',
+     registrations: 'clients/registrations'
   }
 
   resources :reservations
@@ -11,6 +13,8 @@ Rails.application.routes.draw do
     resources :users
     resources :districts
     resources :clients
+
+    resources :carousels
     
     #marcas de vehiculos
     resources :car_brands

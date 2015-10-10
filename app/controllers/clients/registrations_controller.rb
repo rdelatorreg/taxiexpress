@@ -57,4 +57,14 @@ class Clients::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def sign_up_params
+    params.require(:client).permit(:firstname, :lastname, :documenttype, :documentnumber, :address, :birthdate, :email, :password, :password_confirmation)
+  end
+
+  def account_update_params
+    params.require(:client).permit(:firstname, :lastname, :documenttype, :documentnumber, :address, :birthdate, :email, :password, :password_confirmation, :current_password)
+  end
 end
