@@ -22,7 +22,12 @@
         <td> <span class="label label-warning"><%= reservation.status.text %></span>  </td>
         <td>S./ <%= reservation.price %></td>
         <td><%= reservation.qualification %></td>
-        <td> <a class="btn btn-default btn-xs">Detalle</a> <a class="btn btn-success btn-xs">Calificar</a> </td>
+        <td> 
+            <%= link_to detalle_reserva_path(reservation.id), class: 'btn btn-info btn-xs' do %> Detalle <% end %>
+            <% if reservation.status_id == 2 %>
+            <%= link_to calificar_servicio_path(reservation.id), class: 'btn btn-success btn-xs' do %> Calificar <% end %>
+            <% end %>
+        </td>
       </tr>
        <% end %>
     </tbody>

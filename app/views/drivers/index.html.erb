@@ -11,7 +11,7 @@
       <th><%= model_class.human_attribute_name(:birth_date) %></th>
       <th><%= model_class.human_attribute_name(:license_number) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th>Condition</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -24,7 +24,7 @@
         <td><%= driver.birth_date %></td>
         <td><%= driver.license_number %></td>
         <td><%= driver.email %></td>
-        <td><%=l driver.created_at %></td>
+        <td><%= driver.cars.count == 0 ? 'Sin Movilidad': 'Con Movililidad' %></td>
         <td>
           
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

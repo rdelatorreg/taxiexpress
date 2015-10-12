@@ -56,9 +56,7 @@ class HomeController < ApplicationController
     
   end
   
-  def mis_reservas
-    
-  end
+  
 
   def nosotros
     

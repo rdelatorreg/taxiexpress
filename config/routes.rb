@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
+  
   get 'micuenta/principal'
   get 'micuenta/mis_reservas'
   get 'micuenta/mis_direcciones'
+  get 'micuenta/detalle_reserva/:id' => 'micuenta#detalle_reserva', as: :detalle_reserva
+  get 'micuenta/calificar_servicio/:id' => 'micuenta#calificar_servicio', as: :calificar_servicio
+  
+  patch 'micuenta/calificar_servicio/:id' => 'micuenta#calificar_servicio_post', as: :calificar_servicio_post
   
   
   scope '/micuenta' do
@@ -16,11 +21,14 @@ Rails.application.routes.draw do
 
 
   scope '/admin' do
-
+    resources :cars
     resources :rates
     resources :drivers
 
     resources :reservations
+    
+    get 'reservations/asigna_chofer/:id' => 'reservations#asigna_chofer', as: :asigna_chofer
+    
     resources :galeries
 
     resources :districts

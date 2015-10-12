@@ -1,6 +1,11 @@
 class ReservationsController < ApplicationController
-  before_action :set_reservation, only: [:show, :edit, :update, :destroy]
+  before_action :set_reservation, only: [:show, :edit, :update, :destroy, :asigna_chofer]
   layout 'admin'
+  
+  def asigna_chofer
+      @drivers = Driver.all
+  end
+  
   # GET /reservations
   # GET /reservations.json
   def index
@@ -40,6 +45,12 @@ class ReservationsController < ApplicationController
   # PATCH/PUT /reservations/1
   # PATCH/PUT /reservations/1.json
   def update
+    
+    if params[:driver_id] != 0
+      @reservation.status_id = 2
+      @reservation.save
+    end
+    
     respond_to do |format|
       if @reservation.update(reservation_params)
         format.html { redirect_to @reservation, notice: 'Reservation was successfully updated.' }
@@ -69,6 +80,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:origin_id, :destination_id, :pickuptime, :origin_street, :destination_street, :price, :qualification, :client_id)
+      params.require(:reservation).permit(:origin_id, :destination_id, :pickuptime, :origin_street, :destination_street, :price, :qualification, :client_id, :driver_id)
     end
 end

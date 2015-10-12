@@ -1,0 +1,18 @@
+<%= simple_form_for @car, :html => { :class => '' } do |f| %>
+  <%= f.input :brand_id, collection: @brand, :label_method => 'text', :value_method => 'value' %>
+  <%= error_span(@car[:brand_id]) %>
+  <%= f.input :status_id , collection: @status, :label_method => 'text', :value_method => 'value' %>
+  <%= error_span(@car[:status_id]) %>
+  <%= f.input :model %>
+  <%= error_span(@car[:model]) %>
+  <%= f.input :year %>
+  <%= error_span(@car[:year]) %>
+  <%= f.input :description %>
+  <%= error_span(@car[:description]) %>
+  <%= f.input :driver_id, collection: @drivers , :label_method => 'fullname', :value_method => 'id' %>
+  <%= error_span(@car[:driver_id]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                cars_path, :class => 'btn btn-default' %>
+<% end %>

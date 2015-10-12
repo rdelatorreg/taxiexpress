@@ -1,0 +1,35 @@
+<%= content_for :contenido do %>
+<dl class="dl-horizontal">
+  <dt><strong>Origen:</strong></dt>
+  <dd><%= @rs.origin_name %></dd>
+  <dt><strong>Calle Origen:</strong></dt>
+  <dd><%= @rs.origin_street %></dd>
+  <dt><strong>Destino:</strong></dt>
+  <dd><%= @rs.destination_name %></dd>
+  <dt><strong>Calle Destino:</strong></dt>
+  <dd><%= @rs.destination_street %></dd>
+  <dt><strong>Hora de Recojo:</strong></dt>
+  <dd><%= @rs.pickuptime %></dd>
+  
+  <dt><strong>SubTotal  (S/.):</strong></dt>
+  <dd><%= @rs.price %>.00</dd>
+  <dt><strong>IGV  (S/.):</strong></dt>
+  <dd><%= @rs.igv %>.00</dd>
+  <dt><strong>Total (S/.):</strong></dt>
+  <dd><%= @rs.totalprice %>.00</dd>
+  
+  <dt><strong>Calificación:</strong></dt>
+  <dd><%= @rs.qualification %></dd>
+  <dt><strong>FeedBack:</strong></dt>
+  <dd><%= @rs.feedback %></dd>
+</dl>
+
+<div class="text-center">
+    <%= link_to micuenta_mis_reservas_path, class: 'btn btn-warning' do %>
+        Volver
+    <% end %>
+</div>
+
+<% end %>
+
+<%= render template: "micuenta/laycuenta" %>

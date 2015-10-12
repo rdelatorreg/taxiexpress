@@ -29,6 +29,26 @@ sexo = Entity.create(Description: 'Sexo')
                 {text:'Masculino', value: 1, entity:sexo},
                 {text:'Femenino', value: 2, entity:sexo}
             ])
+            
+status_reserva = Entity.create(Description: 'Estado Reserva')
+            Parameter.create([
+                {text:'Pendiente', value: 1, entity:status_reserva},
+                {text:'Reservado', value: 2, entity:status_reserva},
+                {text:'Calificado', value: 3, entity:status_reserva}
+            ])
+
+marcas_autos = Entity.create(Description: 'Marca de Autos')
+            Parameter.create([
+                {text:'Toyota', value: 1, entity:marcas_autos},
+                {text:'Nissan', value: 2, entity:marcas_autos},
+                {text:'VolksWagen', value: 3, entity:marcas_autos}
+            ])
+estado_autos = Entity.create(Description: 'Modalidad de Autos')
+            Parameter.create([
+                {text:'De la Empresa', value: 1, entity:estado_autos},
+                {text:'Del Chofer', value: 2, entity:estado_autos},
+                {text:'Alquiler', value: 3, entity:estado_autos}
+            ])
 
 
 

@@ -1,5 +1,6 @@
 class Reservation < ActiveRecord::Base
   belongs_to :client
+  belongs_to :driver
   belongs_to :origen, class_name: 'District', foreign_key: :origin_id
   belongs_to :destino, class_name: 'District', foreign_key: :destination_id
   

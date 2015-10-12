@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012153406) do
+ActiveRecord::Schema.define(version: 20151012221508) do
 
   create_table "car_brands", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -28,6 +28,19 @@ ActiveRecord::Schema.define(version: 20151012153406) do
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
   end
+
+  create_table "cars", force: :cascade do |t|
+    t.integer  "brand_id",    limit: 4
+    t.integer  "status_id",   limit: 4
+    t.string   "model",       limit: 255
+    t.integer  "year",        limit: 4
+    t.string   "description", limit: 255
+    t.integer  "driver_id",   limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "cars", ["driver_id"], name: "index_cars_on_driver_id", using: :btree
 
   create_table "clients", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
@@ -141,6 +154,7 @@ ActiveRecord::Schema.define(version: 20151012153406) do
     t.integer  "status_id",           limit: 4
     t.integer  "saved_origin_id",     limit: 4
     t.integer  "saved_destinaion_id", limit: 4
+    t.text     "feedback",            limit: 65535
   end
 
   add_index "reservations", ["client_id"], name: "index_reservations_on_client_id", using: :btree
@@ -172,6 +186,7 @@ ActiveRecord::Schema.define(version: 20151012153406) do
     t.datetime "document_updated_at"
   end
 
+  add_foreign_key "cars", "drivers"
   add_foreign_key "parameters", "entities"
   add_foreign_key "reservations", "clients"
   add_foreign_key "vehicles", "car_brands"

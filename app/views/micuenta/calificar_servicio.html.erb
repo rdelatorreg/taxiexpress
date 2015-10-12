@@ -1,0 +1,20 @@
+<%= content_for :contenido do %>
+
+<%= simple_form_for @rs, url: calificar_servicio_post_path(@rs.id), :html => { :class => 'form' } do |f| %>
+
+  <%= f.input :qualification, collection: 1..10, required: true %>
+  <%= error_span(@rs[:qualification]) %>
+  <%= f.input :feedback %>
+  <%= error_span(@rs[:feedback]) %>
+  
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                clients_path, :class => 'btn btn-default' %>
+                
+                <br/><br/>
+<% end %>
+
+<% end %>
+
+<%= render template: "micuenta/laycuenta" %>

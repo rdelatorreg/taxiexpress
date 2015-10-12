@@ -5,33 +5,39 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:status_id) %></th>
+      
       <th><%= model_class.human_attribute_name(:origin_id) %></th>
       <th><%= model_class.human_attribute_name(:destination_id) %></th>
       <th><%= model_class.human_attribute_name(:pickuptime) %></th>
       <th><%= model_class.human_attribute_name(:origin_street) %></th>
       <th><%= model_class.human_attribute_name(:destination_street) %></th>
       <th><%= model_class.human_attribute_name(:price) %></th>
-      <th><%= model_class.human_attribute_name(:qualification) %></th>
+      
       <th><%= model_class.human_attribute_name(:client_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:driver_id) %></th>
+      <th><%= model_class.human_attribute_name(:qualification) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= link_to reservation.id, reservation_path(reservation) %></td>
-        <td><%= reservation.origin_id %></td>
-        <td><%= reservation.destination_id %></td>
+        <td><span class="label label-warning"><%= reservation.status.text %></span></td>
+        
+        <td><%= reservation.origin_name %></td>
+        <td><%= reservation.destination_name %></td>
         <td><%= reservation.pickuptime %></td>
         <td><%= reservation.origin_street %></td>
         <td><%= reservation.destination_street %></td>
         <td><%= reservation.price %></td>
+        
+        <td><%= reservation.client.fullname %></td>
+        <td><%= reservation.driver ? reservation.driver.fullname : 'No Asignado' %></td>
         <td><%= reservation.qualification %></td>
-        <td><%= reservation.client_id %></td>
-        <td><%=l reservation.created_at %></td>
         <td>
+          <a href="<%= asigna_chofer_path(reservation.id) %>" class="btn btn-info btn-xs">Asignar Chofer</a>
+          
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_reservation_path(reservation), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

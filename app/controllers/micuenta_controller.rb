@@ -1,5 +1,6 @@
 class MicuentaController < ApplicationController
   before_action :authenticate_client!
+  
   add_breadcrumb "Inicio", :root_path
   add_breadcrumb "Mi Cuenta", :micuenta_principal_path
   
@@ -17,4 +18,22 @@ class MicuentaController < ApplicationController
     @streets = current_client.mystreets
     
   end
+  
+  def calificar_servicio
+     @rs = Reservation.find(params[:id])
+  end
+  
+  def calificar_servicio_post
+     @rs = Reservation.find(params[:id])
+     
+     if @rs.update(  params.require(:reservation).permit(:qualification, :feedback) )
+       @rs.update(:status_id => 3)
+       render :confirmation_feedback 
+     end
+  end
+  
+  def detalle_reserva
+    @rs = Reservation.find(params[:id])
+  end
+  
 end
