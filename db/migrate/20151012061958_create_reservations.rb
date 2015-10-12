@@ -5,7 +5,7 @@ class CreateReservations < ActiveRecord::Migration
       t.integer :destination_id
       t.datetime :pickuptime
       t.text :origin_street
-      t.string :destination_street
+      t.text :destination_street
       t.decimal :price
       t.decimal :igv
       t.decimal :totalprice

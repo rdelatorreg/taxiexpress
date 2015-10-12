@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
-
-
-  resources :drivers
+  get 'micuenta/principal'
+  get 'micuenta/mis_reservas'
+  get 'micuenta/mis_direcciones'
+  
+  
+  scope '/micuenta' do
+    resources :mystreets  
+  end
+  
   devise_for :clients, controllers: {
      sessions: 'clients/sessions',
      registrations: 'clients/registrations'
@@ -11,7 +17,8 @@ Rails.application.routes.draw do
 
   scope '/admin' do
 
-    resource :rates
+    resources :rates
+    resources :drivers
 
     resources :reservations
     resources :galeries
@@ -28,6 +35,7 @@ Rails.application.routes.draw do
     resources :entities do
        resources :parameters
     end
+    
     delete 'muestra_mensajes/:id' => 'home#destroy'
     get 'muestra_mensajes' => 'home#contacto_show'
     
@@ -44,12 +52,25 @@ Rails.application.routes.draw do
   get 'contacto' => 'home#contacto'
   get 'ingresar' => 'home#ingresar'
   get 'mensaje' => 'home#message'
+  
+  get 'mi_cuenta' => 'home#mi_cuenta'
+  
   get 'workwithus/new'
   get 'workwithus/index'
   get 'workwithus/index' => 'workwithus#download', as: :download
+  
   get 'reservacion' => 'home#reservacion'
+  get 'reserva_confirma' => 'home#reserva_confirma'
+  
+  get 'mis_reservas' => 'home#mis_reservas'
+  
+  
   get 'nuestros_vehiculos' => 'home#nuestros_vehiculos'
+  
  #POST
+ 
+  get 'reserva_direcciones/:type' => 'home#reserva_direcciones', as: :reserva_direcciones
+  post 'reserva_proceso'  => 'home#reserva_proceso'
   post 'contacto_create' => 'home#contacto_create'
   post 'workwithus_create' => 'workwithus#create'
   

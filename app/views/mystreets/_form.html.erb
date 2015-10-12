@@ -1,0 +1,10 @@
+<%= simple_form_for @mystreet, :html => { :class => '' } do |f| %>
+  <%= f.input :district_id, collection: @districts %>
+  <%= error_span(@mystreet[:district_id]) %>
+  <%= f.input :street %>
+  <%= error_span(@mystreet[:street]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                mystreets_path, :class => 'btn btn-default' %>
+<% end %>

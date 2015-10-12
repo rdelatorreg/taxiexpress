@@ -37,3 +37,4 @@ sexo = Entity.create(Description: 'Sexo')
     Rate.create({price: [*10..99].sample , origin_id: o, destination_id: d })
   end
 end
+

@@ -5,94 +5,168 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-12 col-md-12">
-    <table class="table table-hover">
+
+<%= simple_form_for @reservation,url: reserva_proceso_path, :html => { :class => '' } do |f| %>
+<div class="row" style="margin-bottom:20px">
+  <div class="col-sm-6">
+    <%= f.input :origin_id, collection: @distritos, input_html: { class: 'postback' } %> 
+    <%= error_span(@reservation[:origin_id]) %>
+    <%= f.input :origin_street %>
+    <%= error_span(@reservation[:origin_street]) %>
+    
+    <div class="text-right">
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#miorigen">
+          Mis Direcciones
+        </button>
+    </div>
+    
+  </div>
+  <div class="col-sm-6">
+    <%= f.input :destination_id, collection: @distritos, input_html: { class: 'postback' } %>
+    <%= error_span(@reservation[:destination_id]) %>
+    
+    <%= f.input :destination_street %>
+    <%= error_span(@reservation[:destination_street]) %>
+    
+    <div class="text-right">
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#midestino">
+          Mis Direcciones
+        </button>
+    </div>
+      
+    
+    
+  </div>
+  <div class="col-sm-6 col-offset-sm-6">
+    <%= f.input :pickuptime %>
+    <%= error_span(@reservation[:pickuptime]) %>
+  </div>
+  <div class="col-sm-12">
+    <% if @precio %>
+    
+    <table class="table table-hover table-bordered">
       <thead>
-      <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th class="text-center">Price</th>
-        <th class="text-center">Total</th>
-        <th> </th>
-      </tr>
+        <tr>
+          <th>Servicio</th>
+          <th>Precio</th>
+        </tr>
       </thead>
       <tbody>
-      <tr>
-        <td class="col-sm-8 col-md-6">
-          <div class="media">
-            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
-            <div class="media-body">
-              <h4 class="media-heading"><a href="#">Product name</a></h4>
-              <h5 class="media-heading"> by <a href="#">Brand name</a></h5>
-              <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
-            </div>
-          </div></td>
-        <td class="col-sm-1 col-md-1" style="text-align: center">
-          <input type="email" class="form-control" id="exampleInputEmail1" value="3">
-        </td>
-        <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
-        <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
-        <td class="col-sm-1 col-md-1">
-          <button type="button" class="btn btn-danger">
-            <span class="glyphicon glyphicon-remove"></span> Remove
-          </button></td>
-      </tr>
-      <tr>
-        <td class="col-md-6">
-          <div class="media">
-            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
-            <div class="media-body">
-              <h4 class="media-heading"><a href="#">Product name</a></h4>
-              <h5 class="media-heading"> by <a href="#">Brand name</a></h5>
-              <span>Status: </span><span class="text-warning"><strong>Leaves warehouse in 2 - 3 weeks</strong></span>
-            </div>
-          </div></td>
-        <td class="col-md-1" style="text-align: center">
-          <input type="email" class="form-control" id="exampleInputEmail1" value="2">
-        </td>
-        <td class="col-md-1 text-center"><strong>$4.99</strong></td>
-        <td class="col-md-1 text-center"><strong>$9.98</strong></td>
-        <td class="col-md-1">
-          <button type="button" class="btn btn-danger">
-            <span class="glyphicon glyphicon-remove"></span> Remove
-          </button></td>
-      </tr>
-      <tr>
-        <td>   </td>
-        <td>   </td>
-        <td>   </td>
-        <td><h5>Subtotal</h5></td>
-        <td class="text-right"><h5><strong>$24.59</strong></h5></td>
-      </tr>
-      <tr>
-        <td>   </td>
-        <td>   </td>
-        <td>   </td>
-        <td><h5>Estimated shipping</h5></td>
-        <td class="text-right"><h5><strong>$6.94</strong></h5></td>
-      </tr>
-      <tr>
-        <td>   </td>
-        <td>   </td>
-        <td>   </td>
-        <td><h3>Total</h3></td>
-        <td class="text-right"><h3><strong>$31.53</strong></h3></td>
-      </tr>
-      <tr>
-        <td>   </td>
-        <td>   </td>
-        <td>   </td>
-        <td>
-          <button type="button" class="btn btn-default">
-            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-          </button></td>
-        <td>
-          <button type="button" class="btn btn-success">
-            Checkout <span class="glyphicon glyphicon-play"></span>
-          </button></td>
-      </tr>
+        <tr>
+          <td>
+            <strong>Origen: </strong> <%=@precio.origin_name%><br/>
+            <strong>Destino: </strong> <%=@precio.destination_name%><br/>
+            <strong>Hora de Recojo: </strong><%= @reservation.pickuptime  %>
+          </td>
+          <td>S/. <%=@reservation.price %></td>
+        </tr>
       </tbody>
+       <tfoot>
+        <tr>
+           <td class="text-right"><strong>I.G.V</strong></td>
+           <td>S./ <%=@reservation.igv %></td>
+        </tr>
+        <tr>
+           <td class="text-right"><strong>Total</strong></td>
+           <td>S./ <%=@reservation.totalprice %></td>
+        </tr>
+       </tfoot>
     </table>
+    
+    <div class="text-right">
+      <%= f.button :submit, :class => 'btn-success', :value => 'Reservar' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), reserva_proceso_path, :class => 'btn btn-default' %>  
+    </div>
+    
+    
+    <% end  %> 
   </div>
 </div>
+
+<div class="modal fade" id="miorigen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Origen Conocido</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <td></td>
+              <td>Distrito</td>
+              <td>Direccion</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% if !@streets  %>
+            <tr>
+              <tr>No tiene direcciones registradas</tr>
+            </tr>
+            <% else  %>
+            
+            <% @streets.each do |e|  %>
+              <tr>
+                <td><button type="button" data-district='<%=e.district.id%>' data-street = '<%=e.street%>' class="btn btn-info btn-xs btn-origen"><i class="fa fa-check"></i></button></td>
+                <td><%=e.district_name%></td>
+                <td><%=e.street%></td>
+              </tr>
+            <% end %>
+            
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="midestino" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Destino Conocido</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <td></td>
+              <td>Distrito</td>
+              <td>Direccion</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% if !@streets  %>
+            <tr>
+              <tr>No tiene direcciones registradas</tr>
+            </tr>
+            <% else  %>
+            
+            <% @streets.each do |e|  %>
+              <tr>
+                <td><button type="button" data-district='<%=e.district.id%>' data-street = '<%=e.street%>' class="btn btn-info btn-xs btn-destino"><i class="fa fa-check"></i></button></td>
+                <td><%=e.district_name%></td>
+                <td><%=e.street%></td>
+              </tr>
+            <% end %>
+            
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+

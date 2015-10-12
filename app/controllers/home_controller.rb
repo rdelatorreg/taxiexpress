@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :authenticate_client!, only: :reservacion
+  before_action :authenticate_client!, only: [:reservacion,:reserva_proceso,:reserva_confirma]
   layout 'portada', only: :index
 
   add_breadcrumb "Inicio", :root_path
@@ -12,6 +12,52 @@ class HomeController < ApplicationController
   
   def reservacion
     add_breadcrumb "Reserva", :reservacion_path
+    @reservation = Reservation.new
+    
+    @reservation.origin_id = params[:origen]
+    @reservation.destination_id = params[:destino]
+    
+    @streets = current_client.mystreets
+    
+    if @reservation.origin_id && @reservation.destination_id
+      set_price
+    end
+    
+    @distritos = District.all
+  end
+  
+  def reserva_direcciones
+    render layout: false
+  end
+  
+  def reserva_proceso
+    @streets = current_client.mystreets
+     @reservation = Reservation.new(reservation_params)
+     @reservation.client_id = current_client.id
+     @distritos = District.all
+     
+     if @reservation.origin_id && @reservation.destination_id
+       set_price
+        if !params[:commit]
+          return render :reservacion
+        end
+     end
+     
+     @reservation.status_id = 1
+     
+    if @reservation.save
+        redirect_to reserva_confirma_path, notice: 'Reservation was successfully created.'
+    else
+        render :reservacion
+    end
+  end
+  
+  def reserva_confirma
+    
+  end
+  
+  def mis_reservas
+    
   end
 
   def nosotros
@@ -107,5 +153,21 @@ class HomeController < ApplicationController
     #Ricardo: estos parametros son necesarios enviar al mysql(insert) cuando se va a grabar en la tabla
     params.require(:contact).permit(:name, :email, :message, :body)
   end 
+  
+  def reservation_params
+      params.require(:reservation).permit(:origin_id, :destination_id, :pickuptime, :origin_street, :destination_street)
+  end
+  
+  def set_price
+      @precio = Rate.where(origin_id: @reservation.origin_id, destination_id: @reservation.destination_id).first
+      @reservation.price = @precio.price
+      @reservation.igv = @precio.price * 0.18
+      @reservation.totalprice = @precio.price +  @precio.price * 0.18
+      
+      
+      
+  end
+  
+ 
   
 end

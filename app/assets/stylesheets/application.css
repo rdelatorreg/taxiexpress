@@ -100,3 +100,8 @@ header.carousel .fill {
 .little-galery > div{
     margin-bottom: 10px;
 }
+
+.confirmation-icon{
+    font-size: 6em;
+    color: green;
+}

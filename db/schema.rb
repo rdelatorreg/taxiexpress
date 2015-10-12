@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012063551) do
+ActiveRecord::Schema.define(version: 20151012153406) do
 
   create_table "car_brands", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -98,6 +98,14 @@ ActiveRecord::Schema.define(version: 20151012063551) do
     t.datetime "image_updated_at"
   end
 
+  create_table "mystreets", force: :cascade do |t|
+    t.integer  "client_id",   limit: 4
+    t.integer  "district_id", limit: 4
+    t.text     "street",      limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "parameters", force: :cascade do |t|
     t.string   "text",       limit: 255
     t.integer  "value",      limit: 4
@@ -117,19 +125,22 @@ ActiveRecord::Schema.define(version: 20151012063551) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.integer  "origin_id",          limit: 4
-    t.integer  "destination_id",     limit: 4
+    t.integer  "origin_id",           limit: 4
+    t.integer  "destination_id",      limit: 4
     t.datetime "pickuptime"
-    t.text     "origin_street",      limit: 65535
-    t.string   "destination_street", limit: 255
-    t.decimal  "price",                            precision: 10
-    t.decimal  "igv",                              precision: 10
-    t.decimal  "totalprice",                       precision: 10
-    t.integer  "qualification",      limit: 4
-    t.integer  "client_id",          limit: 4
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.integer  "driver_id",          limit: 4
+    t.text     "origin_street",       limit: 65535
+    t.text     "destination_street",  limit: 65535
+    t.decimal  "price",                             precision: 10
+    t.decimal  "igv",                               precision: 10
+    t.decimal  "totalprice",                        precision: 10
+    t.integer  "qualification",       limit: 4
+    t.integer  "client_id",           limit: 4
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.integer  "driver_id",           limit: 4
+    t.integer  "status_id",           limit: 4
+    t.integer  "saved_origin_id",     limit: 4
+    t.integer  "saved_destinaion_id", limit: 4
   end
 
   add_index "reservations", ["client_id"], name: "index_reservations_on_client_id", using: :btree

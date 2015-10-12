@@ -1,0 +1,33 @@
+<%= content_for :contenido do %>
+
+   <table class="table table-bordered table-hover">
+    <thead>
+     <tr>
+        <th>Registro</th>
+        <th>Origens</th>
+        <th>Destino</th>
+        <th>Estado</th>
+        <th>Precio</th>
+        <th>Calificación</th>
+        <th></th>
+     </tr>
+    </thead>
+    
+    <tbody>
+       <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.created_at.strftime("%d/%m/%Y %I:%M%p") %></td>
+        <td><%= reservation.origin_name %></td>
+        <td><%= reservation.destination_name %></td>
+        <td> <span class="label label-warning"><%= reservation.status.text %></span>  </td>
+        <td>S./ <%= reservation.price %></td>
+        <td><%= reservation.qualification %></td>
+        <td> <a class="btn btn-default btn-xs">Detalle</a> <a class="btn btn-success btn-xs">Calificar</a> </td>
+      </tr>
+       <% end %>
+    </tbody>
+   </table>
+   
+<% end %>
+
+<%= render template: "micuenta/laycuenta" %>

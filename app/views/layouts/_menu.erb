@@ -34,9 +34,12 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-home"></i> <%= current_client.fullname %> <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Mi Cuenta</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
+                <li>
+                  <%= link_to micuenta_principal_path do  %>
+                    <i class="fa fa-user"></i> Mi Cuenta
+                  <% end  %>
+                </li>
+                
                 <li role="separator" class="divider"></li>
                 <li><%= link_to destroy_client_session_path, method: :delete do %>
                       <i class="fa fa-sign-out"></i> Salir

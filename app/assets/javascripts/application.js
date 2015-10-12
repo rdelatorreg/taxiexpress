@@ -14,3 +14,26 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+
+$(function(){
+    $('.postback').change(function(){
+        this.form.submit();
+    });
+    
+    $('.btn-origen').click(function(){
+          var data = $(this).data();
+          $('#miorigen').modal('hide');
+          
+          $('#reservation_origin_id').val(data.district);
+          $('#reservation_origin_street').val(data.street);
+    });
+    
+    $('.btn-destino').click(function(){
+          var data = $(this).data();
+          $('#midestino').modal('hide');
+          
+          $('#reservation_destination_id').val(data.district);
+          $('#reservation_destination_street').val(data.street);
+    });
+      
+})
