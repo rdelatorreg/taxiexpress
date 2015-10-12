@@ -22,7 +22,8 @@ class HomeController < ApplicationController
   end
   
   def tarifas
-    
+    add_breadcrumb "Reserva", :tarifas_path
+    @distritos = District.all
   end
   
   def trabaja_nosotros

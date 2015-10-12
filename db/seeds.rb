@@ -5,6 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
 districts = District.create([
             {name:'Cercado de Lima'},
             {name:'Lince'},
@@ -12,7 +14,8 @@ districts = District.create([
             {name:'Magdalena del Mar'},
             {name:'Ancon'},
             {name:'Villa Maria del triunfo'},
-            {name:'Cercado de Lima'},{name:'Miraflores'}
+            {name:'Cercado de Lima'},
+            {name:'Miraflores'}
             ])
             
 documentos = Entity.create(Description: 'Documento de Identidad')
@@ -26,3 +29,11 @@ sexo = Entity.create(Description: 'Sexo')
                 {text:'Masculino', value: 1, entity:sexo},
                 {text:'Femenino', value: 2, entity:sexo}
             ])
+
+
+
+[1,2,3,4,5,6,7,8].each do |o|
+  [1,2,3,4,5,6,7,8].each do |d|
+    Rate.create({price: [*10..99].sample , origin_id: o, destination_id: d })
+  end
+end

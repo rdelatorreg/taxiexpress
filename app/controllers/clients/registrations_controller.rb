@@ -5,14 +5,16 @@ class Clients::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
    def new
+     @docs = Parameter.where(entity_id: 1)
      add_breadcrumb "Registro"
      super
    end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+     @docs = Parameter.where(entity_id: 1)
+     super
+   end
 
   # GET /resource/edit
   # def edit

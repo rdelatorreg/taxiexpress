@@ -11,7 +11,7 @@
         <div class="form-inputs">
           <%= f.input :firstname, required: true, autofocus: true %>
           <%= f.input :lastname, required: true %>
-          <%= f.input :documenttype, required: true %>
+          <%= f.input :documenttype, required: true, collection: @docs,:label_method => :text,:value_method => :value %>
           <%= f.input :documentnumber, required: true %>
 
 

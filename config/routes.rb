@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :galeries
+  resources :rates
   devise_for :clients, controllers: {
      sessions: 'clients/sessions',
      registrations: 'clients/registrations'
@@ -10,6 +12,8 @@ Rails.application.routes.draw do
 
 
   scope '/admin' do
+
+    resource :rates
 
     resources :districts
     resources :clients

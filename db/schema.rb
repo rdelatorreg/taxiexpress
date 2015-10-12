@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012022852) do
+ActiveRecord::Schema.define(version: 20151012051513) do
 
   create_table "car_brands", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -74,6 +74,17 @@ ActiveRecord::Schema.define(version: 20151012022852) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "galeries", force: :cascade do |t|
+    t.string   "title",              limit: 255
+    t.string   "description",        limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+  end
+
   create_table "parameters", force: :cascade do |t|
     t.string   "text",       limit: 255
     t.integer  "value",      limit: 4
@@ -83,6 +94,14 @@ ActiveRecord::Schema.define(version: 20151012022852) do
   end
 
   add_index "parameters", ["entity_id"], name: "index_parameters_on_entity_id", using: :btree
+
+  create_table "rates", force: :cascade do |t|
+    t.decimal  "price",                    precision: 10
+    t.integer  "origin_id",      limit: 4
+    t.integer  "destination_id", limit: 4
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
 
   create_table "vehicles", force: :cascade do |t|
     t.string   "model",            limit: 255

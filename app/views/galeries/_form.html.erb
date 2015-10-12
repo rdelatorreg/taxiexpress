@@ -1,0 +1,13 @@
+<%= simple_form_for @galery, :html => { :class => '' } do |f| %>
+  <%= f.input :title %>
+  <%= error_span(@galery[:title]) %>
+  <%= f.input :description %>
+  <%= error_span(@galery[:description]) %>
+  <%= f.input :image, as: :file %>
+  <%= error_span(@galery[:image]) %>
+
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                galeries_path, :class => 'btn btn-default' %>
+<% end %>

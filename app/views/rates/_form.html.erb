@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-sm-6">
+    <%= simple_form_for @rate, :html => { :class => '' } do |f| %>
+        <%= f.input :price %>
+        <%= error_span(@rate[:price]) %>
+        <%= f.input :origin_id, collection: @districts %>
+        <%= error_span(@rate[:origin_id]) %>
+        <%= f.input :destination_id, collection: @districts %>
+        <%= error_span(@rate[:destination_id]) %>
+
+        <%= f.button :submit, :class => 'btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    rates_path, :class => 'btn btn-default' %>
+    <% end %>
+
+  </div>
+</div>
+
