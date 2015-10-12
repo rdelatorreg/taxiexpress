@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012051513) do
+ActiveRecord::Schema.define(version: 20151012063551) do
 
   create_table "car_brands", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -68,6 +68,19 @@ ActiveRecord::Schema.define(version: 20151012051513) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "drivers", force: :cascade do |t|
+    t.string   "first_name",     limit: 255
+    t.string   "last_name",      limit: 255
+    t.date     "birth_date"
+    t.string   "license_number", limit: 255
+    t.string   "email",          limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "vehicle_id",     limit: 4
+  end
+
+  add_index "drivers", ["vehicle_id"], name: "index_drivers_on_vehicle_id", using: :btree
+
   create_table "entities", force: :cascade do |t|
     t.string   "Description", limit: 255
     t.datetime "created_at",              null: false
@@ -103,6 +116,25 @@ ActiveRecord::Schema.define(version: 20151012051513) do
     t.datetime "updated_at",                              null: false
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "origin_id",          limit: 4
+    t.integer  "destination_id",     limit: 4
+    t.datetime "pickuptime"
+    t.text     "origin_street",      limit: 65535
+    t.string   "destination_street", limit: 255
+    t.decimal  "price",                            precision: 10
+    t.decimal  "igv",                              precision: 10
+    t.decimal  "totalprice",                       precision: 10
+    t.integer  "qualification",      limit: 4
+    t.integer  "client_id",          limit: 4
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.integer  "driver_id",          limit: 4
+  end
+
+  add_index "reservations", ["client_id"], name: "index_reservations_on_client_id", using: :btree
+  add_index "reservations", ["driver_id"], name: "index_reservations_on_driver_id", using: :btree
+
   create_table "vehicles", force: :cascade do |t|
     t.string   "model",            limit: 255
     t.integer  "fabrication_year", limit: 4
@@ -130,5 +162,6 @@ ActiveRecord::Schema.define(version: 20151012051513) do
   end
 
   add_foreign_key "parameters", "entities"
+  add_foreign_key "reservations", "clients"
   add_foreign_key "vehicles", "car_brands"
 end

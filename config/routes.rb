@@ -1,19 +1,20 @@
 Rails.application.routes.draw do
 
-  resources :galeries
-  resources :rates
+
+
+  resources :drivers
   devise_for :clients, controllers: {
      sessions: 'clients/sessions',
      registrations: 'clients/registrations'
   }
 
-  resources :reservations
-
-
 
   scope '/admin' do
 
     resource :rates
+
+    resources :reservations
+    resources :galeries
 
     resources :districts
     resources :clients
@@ -47,6 +48,7 @@ Rails.application.routes.draw do
   get 'workwithus/index'
   get 'workwithus/index' => 'workwithus#download', as: :download
   get 'reservacion' => 'home#reservacion'
+  get 'nuestros_vehiculos' => 'home#nuestros_vehiculos'
  #POST
   post 'contacto_create' => 'home#contacto_create'
   post 'workwithus_create' => 'workwithus#create'

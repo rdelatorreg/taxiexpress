@@ -67,77 +67,37 @@
                 </div>
             </div>
         </div>
-        <!-- /.row -->
 
-        <!-- Portfolio Section -->
+
         <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Nuestra Flota</h2>
-            </div>
-           
-            <div class="col-md-4 col-sm-6">
-                
-                        <div class="imagen_logo">
-                            <%= image_tag "chery1.jpg", size: "387x250", alt: " " %>
-                        </div>
-            </div>
-            
-            <div class="col-md-4 col-sm-6">
-                        <div class="imagen_logo">
-                            <%= image_tag "chery2.jpg", size: "387x250", alt: " " %>
-                        </div>
-            </div> 
-            
-            <div class="col-md-4 col-sm-6">
-                        <div class="imagen_logo">
-                            <%= image_tag "chery3.jpg", size: "387x250", alt: " " %>
-                        </div>
-            </div>
-            
-            <div class="col-md-4 col-sm-6">
-                        <div class="imagen_logo">
-                            <%= image_tag "chery4.jpg", size: "387x250", alt: " " %>
-                        </div>
-            </div>
-            
-            <div class="col-md-4 col-sm-6">
-                        <div class="imagen_logo">
-                            <%= image_tag "chery5.jpg", size: "387x250", alt: " " %>
-                        </div>
-            </div>
-            
-            <div class="col-md-4 col-sm-6">
-                        <div class="imagen_logo">
-                            <%= image_tag "chery6.jpg", size: "387x250", alt: " " %>
-                        </div>
+          <div class="col-sm-4">
+            <h3>Nuestros Servicios</h3>
+            <ul class="list">
+              <li><a href="#">Dpsum dolor sit ametteturing elit mollis<br>Proin pharetra luctus diam, a scelerisque</a></li>
+              <li><a href="#">Fusce adipiscing quam id risus sagittisnst<br>Tiroin ut tincidunt nulla, eu sodales arcua</a></li>
+              <li><a href="#">Nnulla nunc, eu ultrices liberocer ultricie<br>Hasellus accumsan justo vitae feugiat plac </a></li>
+              <li><a href="#">Praesent vel ultrices veliuspendisse risususa<br>Vitae eleifend sed, cursus sit amet sastibul</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+
+            <a href="<%= nuestros_vehiculos_url %>"><h3>Nuestra Flota</h3></a>
+
+            <div class="row little-galery">
+              <% @galeries.each do |g| %>
+                  <div class="col-sm-4"><%= image_tag g.image.url(:thumb), class: "img-responsive" %> </div>
+              <% end %>
+
             </div>
 
-        </div>
-        <!-- /.row -->
+          </div>
+          <div class="col-sm-4">
+            <h3>Feedbacks</h3>
 
-        <!-- Features Section -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Nuestros Servicios</h2>
-            </div>
-            <div class="col-md-6">
-                <p>The Modern Business template by Start Bootstrap includes:</p>
-                <ul>
-                    <li><strong>Bootstrap v3.2.0</strong>
-                    </li>
-                    <li>jQuery v1.11.0</li>
-                    <li>Font Awesome v4.1.0</li>
-                    <li>Working PHP contact form with validation</li>
-                    <li>Unstyled page elements for easy customization</li>
-                    <li>17 HTML pages</li>
-                </ul>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
-            </div>
-            <div class="col-md-6">
-                <img class="img-responsive" src="http://placehold.it/700x450" alt="">
-            </div>
+          </div>
         </div>
-        <!-- /.row -->
+
+
 
         <hr>
 
@@ -148,7 +108,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
                 </div>
                 <div class="col-md-4">
-                    <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
+                    <a class="btn btn-lg btn-default btn-block" href="#">Reservaciones</a>
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@ class HomeController < ApplicationController
   def index
     @districts =  District.all.collect {|p| [ p.name, p.id ] }
     @carousel = Carousel.all
+    @galeries = Galery.take(6)
   end
   
   def reservacion
@@ -19,6 +20,11 @@ class HomeController < ApplicationController
   
   def nuestros_servicios
     
+  end
+
+  def nuestros_vehiculos
+    add_breadcrumb "Nuestra Flota", :nuestros_vehiculos_path
+    @galeries = Galery.all
   end
   
   def tarifas

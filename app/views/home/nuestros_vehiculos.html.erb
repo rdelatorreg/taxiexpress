@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Nuestra Flota</h1>
+    <%= render_breadcrumbs("", { active_class: 'active' }) %>
+  </div>
+</div>
+
+<div class="row">
+  <% @galeries.each do |g| %>
+      <div class="col-md-6 portfolio-item">
+        <a href="#">
+          <%= image_tag g.image.url, class: "img-responsive" %>
+        </a>
+        <h3>
+          <%= g.title %>
+        </h3>
+        <p><%= g.description%></p>
+      </div>
+  <% end %>
+
+
+</div>

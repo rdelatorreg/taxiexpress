@@ -1,0 +1,22 @@
+<%= simple_form_for @reservation, :html => { :class => '' } do |f| %>
+  <%= f.input :origin_id %>
+  <%= error_span(@reservation[:origin_id]) %>
+  <%= f.input :destination_id %>
+  <%= error_span(@reservation[:destination_id]) %>
+  <%= f.input :pickuptime %>
+  <%= error_span(@reservation[:pickuptime]) %>
+  <%= f.input :origin_street %>
+  <%= error_span(@reservation[:origin_street]) %>
+  <%= f.input :destination_street %>
+  <%= error_span(@reservation[:destination_street]) %>
+  <%= f.input :price %>
+  <%= error_span(@reservation[:price]) %>
+  <%= f.input :qualification %>
+  <%= error_span(@reservation[:qualification]) %>
+  <%= f.input :client_id %>
+  <%= error_span(@reservation[:client_id]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                reservations_path, :class => 'btn btn-default' %>
+<% end %>

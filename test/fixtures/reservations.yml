@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  origin_id: 1
+  destination_id: 1
+  pickuptime: 2015-10-12 01:19:58
+  origin_street: MyText
+  destination_street: MyString
+  price: 9.99
+  qualification: 1
+  client_id: 
+
+two:
+  origin_id: 1
+  destination_id: 1
+  pickuptime: 2015-10-12 01:19:58
+  origin_street: MyText
+  destination_street: MyString
+  price: 9.99
+  qualification: 1
+  client_id: 

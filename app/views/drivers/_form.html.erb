@@ -1,0 +1,16 @@
+<%= simple_form_for @driver, :html => { :class => '' } do |f| %>
+  <%= f.input :first_name %>
+  <%= error_span(@driver[:first_name]) %>
+  <%= f.input :last_name %>
+  <%= error_span(@driver[:last_name]) %>
+  <%= f.input :birth_date %>
+  <%= error_span(@driver[:birth_date]) %>
+  <%= f.input :license_number %>
+  <%= error_span(@driver[:license_number]) %>
+  <%= f.input :email %>
+  <%= error_span(@driver[:email]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                drivers_path, :class => 'btn btn-default' %>
+<% end %>
