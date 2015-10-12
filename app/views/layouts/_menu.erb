@@ -27,19 +27,19 @@
           <a href="<%=contacto_path%>">Contacto</a>
         </li>
         <li>
-          <p class="navbar-btn">
+
 
             <% if client_signed_in? %>
 
-                <%= link_to destroy_client_session_path, method: :delete, class: "btn btn-danger" do %>
+                <%= link_to destroy_client_session_path, method: :delete do %>
                     <i class="fa fa-sign-out"></i> Salir
                 <% end %>
 
             <% else %>
-                <a href="<%=new_client_session_path%>" class="btn btn-success"><i class="fa fa-home"></i> Ingresar</a>
+                <a style="font-weight: bolder" href="<%=new_client_session_path%>"><i class="fa fa-key"></i> Ingresar</a>
 
             <% end %>
-          </p>
+
         </li>
 
       </ul>

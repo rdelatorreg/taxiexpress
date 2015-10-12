@@ -2,6 +2,8 @@ class HomeController < ApplicationController
   before_action :authenticate_client!, only: :reservacion
   layout 'portada', only: :index
 
+  add_breadcrumb "Inicio", :root_path
+
   def index
     @districts =  District.all.collect {|p| [ p.name, p.id ] }
     @carousel = Carousel.all
@@ -24,7 +26,7 @@ class HomeController < ApplicationController
   end
   
   def trabaja_nosotros
-    
+
   end
   
   #Ricardo: muestra bandeja de listado de los mensajes ingresados
@@ -51,6 +53,7 @@ class HomeController < ApplicationController
   
   # Ricardo: crea formulario para ingresar un nuevo ccontactenos
   def contacto
+    add_breadcrumb "Contactenos", :contacto_path
     @contacto = Contact.new
   end   
   

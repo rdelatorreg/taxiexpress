@@ -1,6 +1,6 @@
 class WorkwithusController < ApplicationController
   #before_action :set_workwithu, only: [:new]  
-  
+
   # GET /workwithus
   # GET /workwithus.json  
   def index
@@ -20,6 +20,9 @@ class WorkwithusController < ApplicationController
   end
   
   def new
+    add_breadcrumb 'Inicio', root_path
+    add_breadcrumb 'Trabaja con nosotros', workwithus_new_path
+
     @workwithus = Workwithu.new
   end
  

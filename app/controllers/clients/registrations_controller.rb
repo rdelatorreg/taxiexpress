@@ -1,11 +1,13 @@
 class Clients::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
+  add_breadcrumb "Inicio", :root_path
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+   def new
+     add_breadcrumb "Registro"
+     super
+   end
 
   # POST /resource
   # def create

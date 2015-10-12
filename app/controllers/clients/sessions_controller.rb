@@ -1,8 +1,10 @@
 class Clients::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
 
+  add_breadcrumb "Inicio", :root_path
   # GET /resource/sign_in
    def new
+     add_breadcrumb "Login", :new_client_session_path
      super
    end
 
