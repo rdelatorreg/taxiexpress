@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 
   scope '/admin' do
-    resources :users
+
     resources :districts
     resources :clients
 
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     
     
     
-    get '/' => 'users#index'
+    get '/' => 'clients#index'
   end
   
   root 'home#index'

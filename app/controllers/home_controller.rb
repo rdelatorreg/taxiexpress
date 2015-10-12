@@ -10,7 +10,7 @@ class HomeController < ApplicationController
   end
   
   def reservacion
-
+    add_breadcrumb "Reserva", :reservacion_path
   end
 
   def nosotros

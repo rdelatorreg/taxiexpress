@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151010051135) do
+ActiveRecord::Schema.define(version: 20151012022852) do
 
   create_table "car_brands", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -84,30 +84,6 @@ ActiveRecord::Schema.define(version: 20151010051135) do
 
   add_index "parameters", ["entity_id"], name: "index_parameters_on_entity_id", using: :btree
 
-  create_table "reservations", force: :cascade do |t|
-    t.string   "source_addres",     limit: 255
-    t.string   "final_addres",      limit: 255
-    t.integer  "user_id",           limit: 4
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.integer  "districtsource_id", limit: 4
-    t.integer  "districtfinal_id",  limit: 4
-  end
-
-  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name",                  limit: 255
-    t.string   "last_name",             limit: 255
-    t.string   "nick",                  limit: 255
-    t.integer  "phone",                 limit: 4
-    t.integer  "identification_number", limit: 4
-    t.string   "emai",                  limit: 255
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.string   "password_digest",       limit: 255
-  end
-
   create_table "vehicles", force: :cascade do |t|
     t.string   "model",            limit: 255
     t.integer  "fabrication_year", limit: 4
@@ -135,6 +111,5 @@ ActiveRecord::Schema.define(version: 20151010051135) do
   end
 
   add_foreign_key "parameters", "entities"
-  add_foreign_key "reservations", "users"
   add_foreign_key "vehicles", "car_brands"
 end
