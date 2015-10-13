@@ -8,6 +8,8 @@ class HomeController < ApplicationController
     @districts =  District.all.collect {|p| [ p.name, p.id ] }
     @carousel = Carousel.all
     @galeries = Galery.take(6)
+    @feedbacks = Reservation.where(qualification: '> 0').take(5)
+    
   end
   
   def reservacion
